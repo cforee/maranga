@@ -12,6 +12,9 @@ with open (words_file, "r") as fh:
 # and for each permutation, match against words list;
 # finally, return the list of matches
 def permutate_and_search(original_word):
+  if original_word == '':
+    print "DONE!\n"
+    sys.exit()
   print "===> permutating and searching...\n"
   matched_anagrams = []
   permutations = itertools.permutations(original_word)
@@ -26,9 +29,9 @@ def permutate_and_search(original_word):
 
 # get user input from command line
 def get_input_from_user():
-  return raw_input("\nenter a single word (no spaces):")
+  return raw_input("\nenter a single word (empty line to exit):")
 
 
 # let's do this!
-print permutate_and_search(get_input_from_user())
-print ""
+while True:
+  print permutate_and_search(get_input_from_user())
