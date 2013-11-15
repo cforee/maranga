@@ -12,6 +12,7 @@ with open (words_file, "r") as fh:
 # and for each permutation, match against words list;
 # finally, return the list of matches
 def permutate_and_search(original_word):
+  print "===> permutating and searching...\n"
   matched_anagrams = []
   permutations = itertools.permutations(original_word)
   for permutation in permutations:
@@ -19,7 +20,8 @@ def permutate_and_search(original_word):
     if permutation in words:
       # we found a match!  add it to the list of anagrams
       matched_anagrams.append(permutation)
-  return matched_anagrams
+  # convert to set (and back again) to de-dupe
+  return list(set(matched_anagrams))
 
 
 # get user input from command line
@@ -29,3 +31,4 @@ def get_input_from_user():
 
 # let's do this!
 print permutate_and_search(get_input_from_user())
+print ""
